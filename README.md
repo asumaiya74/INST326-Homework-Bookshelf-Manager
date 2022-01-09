@@ -50,6 +50,11 @@ Your script should contain two classes, Book and BookShelf, and at least one fun
   > NOTE: This attribute will start off empty and will not be created until find_popularity() is invoked later.
 
 **Methods**
+- __init__()
+- add_books()
+- find_popularity()
+- 
+
 
 
 
