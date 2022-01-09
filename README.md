@@ -5,22 +5,23 @@ Your script should contain two classes, Book and BookShelf, and at least one fun
 
 
 # remove_punctuation()
+
 **Functionality**
-- This class stores the index for words in books as they are provided.
+- This function takes a string and returns a string containing only the lower cased alphabetical characters. If the item being passed in is not a string a TypeError should be raised.
+
+**Parameters**
+- word: the input string that contains a word. This word may contain non-alphabetical characters such as numbers or punctuation marks.
+
+**Returns**
+- A lowercase string containing only the lowercased alphabetical characters from the input string with all of the non alphabetical characters stripped away. If the string did not contain any alphabetical characters (the string is empty), the function will return None.
+
+# Book class
+
+**Functionality**
+- This class stores the text data for a single book
 
 **Attributes**
-- **index**: a dictionary representing an index of the words of a book where the keys are the unique words found in a series of books, and the values are lists containing string elements that represent the name of the book in which that word is found.
-- **popularity_index**: a dictionary based on the index attribute which is itself an index where the keys are integers that represent how many books a word is found in and the values are the words that correspond to this count. For example: if the words "tree" and "car" are found in two different books, and the word "lantern" is found in one book the dictionary might look like so: {2:["tree", car], 1:["lantern"]}.
+- words: a list of all of the individual words in the book. The elements in this list do not have to be unique.
 
-> Note: This attribute will start off empty and will not be created until find_popularity() is invoked later.
-
-
-# __init__()
-
-# add_books()
-# find_popularity()
-
-> Note: This attribute will start off empty and will not be created until find_popularity() is invoked later.
-
-
-**Attributes**
+**Methods**
+- __init__()
