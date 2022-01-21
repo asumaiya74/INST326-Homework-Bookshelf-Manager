@@ -17,7 +17,6 @@ Your script should contain two classes, Book and BookShelf, and at least one fun
 
 
 # Book class
-
 **Functionality**
 - This class stores the text data for a single book
 
@@ -40,7 +39,6 @@ Your script should contain two classes, Book and BookShelf, and at least one fun
 
 
 # BookShelf class
-
 **Functionality**
 - This class stores the index for words in books as they are provided.
 **Attributes**
@@ -51,22 +49,64 @@ Your script should contain two classes, Book and BookShelf, and at least one fun
 
 **Methods**
 - __init__()
+  - Parameters
+    - Self
+  - Functionality
+    - Sets the index attribute to an empty dictionary (to be populated later). The format of this index will be the following: {word: a list containing names of books that use that word}.
+    - Sets the popularity_index attribute to an empty dictionary (to be populated later).
 - add_books()
+  - Parameters
+    - Self
+    - text
+  - Functionality 
+    - This method will create a book object from the text name that is being passed in. It should invoke the unique_words() method in order to return the unique words in that work. It should save this returned value so that it can add the words from this text and index those words in the index attribute. It should only add to the index, it should not delete or remove anything from the index attribute.
+
+   > NOTE: It is completely fine if the name of the text being indexed is the path to the file itself.
+
 - find_popularity()
-- 
+  - Parameters
+    - Self
+  - Functionality 
+    - This method should reset the popularity_index attribute. It should then populate the popularity_index by iterating over the items of the index attribute so that the popularity_index becomes an index where the keys are integers that represent how many books a word is found in and the values are the words that correspond to this count. For example: if the words "tree" and "car" are found in two books, and the word "lantern" is found in one book the dictionary might look like {2:["tree", car], 1:["lantern"]}.
+
+  > NOTE: This attribute will start off empty and will not be created until find_popularity() is invoked later.
 
 
+# main()
+**Functionality**
+- This function will create an instance of bookshelf. Use each path in the library list (the list that is passed in) to invoke the add_books method on that bookshelf instance. Then invoke the find_popularity() method of the instance of bookshelf that you created.
+
+**Parameters**
+- Library: A list of strings where the strings are paths to text files which are books on your machine.
+
+**Returns**
+- As a tuple, return the index attribute of your bookshelf, length of the index of your bookshelf and the popularity_index attribute of your bookshelf.
 
 
+# parse_args()
+**Functionality**
+- This function will create an instance of an ArgumentParser object and assign one argument to it named books. This argument should be of type str. This argument should be flagged so that it accepts any number of command line arguments (but at least one) and create a list of these arguments. This can be done with the nargs keyword argument of the parse_args method of ArgumentParser. For more information on this keyword argument please take a look at the argpase documentation on nargs.
+
+**Parameters**
+- args_list: A list of command line arguments. Can be of any length.
+
+**Returns**
+- The ArgumentParser object which was created.
 
 
+# if __name__ == "__main__":
+- The if __name__ == "__main__": statement should create a list of strings which are the paths to the text files that you will be indexing (the text files contained in "data").
+- The list is going to come from the returned value of the argparse function (specifically, from the books attribute of this object). You may find that you will need to manipulate the contents of this returned list in some way. You should call the main function and pass in this list as an argument.
 
+> NOTE: For testing purposes, you may print the returned values of the main() function call. The final version of your script dos not need to. You can instead, simply call the
+main().
 
+# Running your program
+- Your program is designed to run from the terminal. To run it, open a terminal and ensure you are in the directory where your script is saved.
+- The program takes at least one command-line argument: the name of the text files (which are books) that you want to process using your script. Below are some examples of how to use the program. The examples assume you are using a Unix based OS (macOS, Linux) and your program is called bookshelf.py. If you are using Windows, replace python3 with python.
+- Your script won’t produce an output unless you print the returned value of the main() function. You may choose to print the values for testing purposes but the final version of your script should not print anything. Keep in mind, should you pass in all the books provided as arguments, the length of the bookshelf index created should be 33065. Should you pass in only don_quixote.txt the length of the bookshelf index created should be 16848.
 
-
-
-
-
+  > NOTE: python3 bookshelf.py don_quixote.txt
 
 
 
